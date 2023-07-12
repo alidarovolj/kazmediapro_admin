@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: "Roboto", sans-serif;
+  color: "#181635";
+  overflow-x: hidden;
+}
+
+section {
+  padding: 140px 0;
+  position: relative;
+  background: url("../img/bg.png");
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+@media (min-width: 1160px) {
+  .container {
+    max-width: 1160px;
+  }
+}
+
+ul li::before {
+  content: "";
+  width: 15px;
+  height: 15px;
+  background: #f18a02;
+  display: inline-block;
+  margin-right: 1rem;
+  border: 5px solid #2058aa;
+}
+
+ul li {
+  margin-bottom: 0.875rem;
+}
