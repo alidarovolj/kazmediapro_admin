@@ -85,7 +85,7 @@
         </ul>
       </div>
       <img
-        class="absolute right-0 bottom-0 w-3/4 lg:w-full"
+        class="absolute right-0 bottom-0 w-3/4 lg:w-[500px]"
         src="@/assets/img/about/bg.png"
         alt=""
       />
