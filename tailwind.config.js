@@ -11,6 +11,7 @@ export default {
       width: {
         half: "49%",
         third: "32%",
+        fifth: "19%",
       },
       minWidth: {
         half: "49%",

@@ -8,6 +8,8 @@ import {
   faMoon,
   faSun,
   faPhone,
+  faArrowDown,
+  faXmark,
 } from "@fortawesome/free-solid-svg-icons";
 
 import App from "./App.vue";
@@ -25,6 +27,8 @@ library.add(faMoon);
 library.add(faSun);
 library.add(faBars);
 library.add(faPhone);
+library.add(faArrowDown);
+library.add(faXmark);
 
 createApp(App)
   .use(store)

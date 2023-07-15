@@ -1,6 +1,6 @@
 <template>
   <div
-    class="sticky w-full z-50 top-0 left-0"
+    class="fixed w-full z-50 top-0 left-0"
     style="box-shadow: 0px 4px 6px -3px rgba(0, 0, 0, 0.25)"
   >
     <div class="w-full bg-white">
@@ -48,35 +48,33 @@
         </div>
       </div>
     </div>
-    <div v-if="menu == true" class="px-4 lg:px-0 sticky w-full top-28">
-      <div class="container mx-auto">
-        <div class="px-4 py-5 w-full bg-white">
+    <div v-if="menu == true" class="fixed bgScreen w-full top-0">
+      <div class="container mx-auto relative">
+        <font-awesome-icon @click="menu = false" class=" absolute right-10 top-9 text-5xl" :icon="['fas', 'xmark']" />
+        <div
+          class="h-screen w-full px-4 py-5 bg-white flex items-center text-xl font-medium"
+        >
           <div class="mb-10">
             <router-link
-              class="px-3 transition-all block mb-3 hover:text-mainColor"
+              class="px-3 transition-all block mb-6 hover:text-mainColor"
               :to="{ name: 'MainPage' }"
               >{{ $t("header.links.about") }}</router-link
             >
             <router-link
-              class="px-3 transition-all block mb-3 hover:text-mainColor"
+              class="px-3 transition-all block mb-6 hover:text-mainColor"
               :to="{ name: 'MainPage' }"
               >{{ $t("header.links.services") }}</router-link
             >
             <router-link
-              class="px-3 transition-all block mb-3 hover:text-mainColor"
+              class="px-3 transition-all block mb-6 hover:text-mainColor"
               :to="{ name: 'MainPage' }"
               >{{ $t("header.links.cases") }}</router-link
             >
             <router-link
-              class="px-3 transition-all block mb-3 hover:text-mainColor"
+              class="px-3 transition-all block hover:text-mainColor"
               :to="{ name: 'MainPage' }"
               >{{ $t("header.links.contacts") }}</router-link
             >
-          </div>
-          <div class="block">
-            <div class="font-semibold text-center">
-              <Button :text="$t('general.callRequest')" />
-            </div>
           </div>
         </div>
       </div>

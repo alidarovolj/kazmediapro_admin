@@ -2,15 +2,78 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  overflow-x: hidden;
+}
+
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: "Montserrat", sans-serif;
   color: "#181635";
   overflow-x: hidden;
 }
 
-section {
-  padding: 140px 0;
+.hero {
+  height: 682px;
+  background: linear-gradient(
+      154deg,
+      rgba(0, 0, 0, 0.2) 0%,
+      rgba(0, 0, 0, 0) 81.97%
+    ),
+    #1d52a7;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+.withLines {
+  writing-mode: tb-rl;
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.lineFirst {
   position: relative;
+  background: #f18a02;
+  width: 1px;
+  height: 100%;
+}
+.lineFirst::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 9px;
+  height: 9px;
+  border-radius: 100%;
+  background: #f18a02;
+  transform: translate(-50%, 50%);
+}
+.lineSecond {
+  position: relative;
+  background: #f18a02;
+  width: 1px;
+  height: 100%;
+}
+.lineSecond::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 9px;
+  height: 9px;
+  border-radius: 100%;
+  background: #f18a02;
+  transform: translate(-50%, -50%);
+}
+
+section {
+  position: relative;
+  background: url("../img/bg.png");
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.bgScreen {
   background: url("../img/bg.png");
   background-position: bottom;
   background-repeat: no-repeat;

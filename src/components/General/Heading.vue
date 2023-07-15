@@ -1,10 +1,13 @@
 <template>
-  <div class="mb-10 dark:text-white flex items-center">
+  <div
+    class="mb-10 dark:text-white flex items-center"
+    :class="{ ' justify-center': center }"
+  >
     <div class="lineBase">
       <div class="lineLeft" v-if="line == 'left'"></div>
     </div>
     <h2
-      class="font-bold text-2xl lg:text-[3.375rem] whitespace-normal lg:whitespace-nowrap text-secondaryColor uppercase"
+      class="font-bold text-2xl lg:text-[3.375rem] whitespace-normal lg:whitespace-nowrap text-secondaryColor uppercase flex justify-center"
     >
       {{ heading }}
     </h2>
@@ -24,6 +27,10 @@ export default {
     },
     line: {
       type: String,
+      required: false,
+    },
+    center: {
+      type: Boolean,
       required: false,
     },
   },
