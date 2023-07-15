@@ -7,7 +7,7 @@ html {
 }
 
 body {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Roboto", sans-serif;
   color: "#181635";
   overflow-x: hidden;
 }
@@ -86,7 +86,7 @@ section {
   }
 }
 
-ul li::before {
+.manufacturing ul li::before {
   content: "";
   width: 15px;
   height: 15px;
@@ -96,6 +96,6 @@ ul li::before {
   border: 5px solid #2058aa;
 }
 
-ul li {
+.manufacturing ul li {
   margin-bottom: 0.875rem;
 }

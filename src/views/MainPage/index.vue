@@ -4,6 +4,7 @@
     <About />
     <WhyUs />
     <Services />
+    <Touch />
   </div>
 </template>
 
@@ -12,6 +13,7 @@ import Hero from "./components/Hero.vue";
 import About from "./components/About.vue";
 import WhyUs from "./components/WhyUs.vue";
 import Services from "./components/Services.vue";
+import Touch from "./components/Touch.vue";
 
 export default {
   name: "MainPage",
@@ -20,6 +22,7 @@ export default {
     About,
     WhyUs,
     Services,
+    Touch,
   },
 };
 </script>

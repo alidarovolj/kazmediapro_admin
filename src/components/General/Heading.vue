@@ -1,18 +1,27 @@
 <template>
   <div
-    class="mb-10 dark:text-white flex items-center"
+    class="mb-10 dark:text-white flex items-center relative z-10"
     :class="{ ' justify-center': center }"
   >
     <div class="lineBase">
-      <div class="lineLeft" v-if="line == 'left'"></div>
+      <div
+        :class="{ '!bg-mainColor': mainColor == true }"
+        class="lineLeft"
+        v-if="line == 'left'"
+      ></div>
     </div>
     <h2
+      :class="{ '!text-mainColor': mainColor == true }"
       class="font-bold text-2xl lg:text-[3.375rem] whitespace-normal lg:whitespace-nowrap text-secondaryColor uppercase flex justify-center"
     >
       {{ heading }}
     </h2>
     <div class="lineBase">
-      <div class="lineRight" v-if="line == 'right'"></div>
+      <div
+        :class="{ '!bg-mainColor': mainColor == true }"
+        class="lineRight"
+        v-if="line == 'right'"
+      ></div>
     </div>
   </div>
 </template>
@@ -30,6 +39,10 @@ export default {
       required: false,
     },
     center: {
+      type: Boolean,
+      required: false,
+    },
+    mainColor: {
       type: Boolean,
       required: false,
     },
@@ -59,6 +72,9 @@ export default {
   transform: translate(-50%, -50%);
   border-radius: 100%;
 }
+.lineRight.\!bg-mainColor::before {
+  background: #2058aa;
+}
 .lineLeft {
   position: absolute;
   background: #f18a02;
@@ -77,5 +93,8 @@ export default {
   background: #f18a02;
   transform: translate(50%, -50%);
   border-radius: 100%;
+}
+.lineLeft.\!bg-mainColor::before {
+  background: #2058aa;
 }
 </style>

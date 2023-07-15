@@ -73,7 +73,7 @@
         </div>
       </div>
     </div>
-    <div class="block lg:flex pb-28">
+    <div class="manufacturing block lg:flex pb-28">
       <div class="container mx-auto px-4 lg:px-0 pl-4 lg:!pl-24 relative z-20">
         <Heading
           class="mb-6 lg:mb-[4.5rem]"
