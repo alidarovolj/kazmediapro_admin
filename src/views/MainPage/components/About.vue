@@ -1,5 +1,5 @@
 <template>
-  <section class="relative pt-32">
+  <section ref="about" id="about" class="relative pt-32 dark:bg-darkBg dark:text-white">
     <div class="container mx-auto px-4 lg:px-0">
       <div
         class="flex flex-col-reverse lg:flex-row justify-between items-center"
@@ -13,8 +13,10 @@
                   src="@/assets/img/about/1.svg"
                   alt=""
                 />
-                <p class="text-[10px] lg:text-base font-bold text-center text-white">
-                  Собственная производственная база
+                <p
+                  class="text-[10px] lg:text-base font-bold text-center text-white"
+                >
+                  {{ $t("mainPage.about.blocks.first") }}
                 </p>
               </div>
             </div>
@@ -25,8 +27,10 @@
                   src="@/assets/img/about/2.svg"
                   alt=""
                 />
-                <p class="text-[10px] lg:text-base font-bold text-center text-white">
-                  Собственные склады хранения
+                <p
+                  class="text-[10px] lg:text-base font-bold text-center text-white"
+                >
+                  {{ $t("mainPage.about.blocks.second") }}
                 </p>
               </div>
             </div>
@@ -39,8 +43,10 @@
                   src="@/assets/img/about/3.svg"
                   alt=""
                 />
-                <p class="text-[10px] lg:text-base font-bold text-center text-white">
-                  Высокотехнологичное оборудование
+                <p
+                  class="text-[10px] lg:text-base font-bold text-center text-white"
+                >
+                  {{ $t("mainPage.about.blocks.third") }}
                 </p>
               </div>
             </div>
@@ -51,24 +57,23 @@
                   src="@/assets/img/about/4.svg"
                   alt=""
                 />
-                <p class="text-[10px] lg:text-base font-bold text-center text-white">
-                  Собственный штат специалистов
+                <p
+                  class="text-[10px] lg:text-base font-bold text-center text-white"
+                >
+                  {{ $t("mainPage.about.blocks.fourth") }}
                 </p>
               </div>
             </div>
           </div>
         </div>
         <div class="w-full lg:w-half flex flex-col mb-[8.5rem]">
-          <Heading class="mb-6 lg:mb-[5.25rem]" heading="о нас" line="right" />
+          <Heading
+            class="mb-6 lg:mb-[5.25rem]"
+            :heading="$t('mainPage.about.header')"
+            line="right"
+          />
           <p class="text-sm lg:text-lg">
-            Следует отметить, что семантический разбор внешних противодействий
-            обеспечивает актуальность переосмысления внешнеэкономических
-            политик. Для современного мира высокое качество позиционных
-            исследований, в своём классическом представлении, допускает
-            внедрение экономической целесообразности принимаемых решений! В
-            своём стремлении улучшить пользовательский опыт мы упускаем, что
-            элементы политического процесса функционально разнесены на
-            независимые элементы.
+            {{ $t("mainPage.about.content") }}
           </p>
         </div>
       </div>
@@ -77,17 +82,17 @@
       <div class="container mx-auto px-4 lg:px-0 pl-4 lg:!pl-24 relative z-20">
         <Heading
           class="mb-6 lg:mb-[4.5rem]"
-          heading="наше производство"
+          :heading="$t('mainPage.manufacture.header')"
           line="left"
         />
         <ul class="text-sm lg:text-xl font-semibold">
-          <li>Фрезерно-гравировальные станки</li>
-          <li>Лазерные гравировальные станки</li>
-          <li>UV печать</li>
-          <li>Широкоформатная печать 1440 dpi</li>
-          <li>Оборудование для работы с деревом и металлом</li>
-          <li>Покраска</li>
-          <li>Логистика, установка по всему Казахстану</li>
+          <li>{{ $t("mainPage.manufacture.first") }}</li>
+          <li>{{ $t("mainPage.manufacture.second") }}</li>
+          <li>{{ $t("mainPage.manufacture.third") }}</li>
+          <li>{{ $t("mainPage.manufacture.fourth") }}</li>
+          <li>{{ $t("mainPage.manufacture.fifth") }}</li>
+          <li>{{ $t("mainPage.manufacture.sixth") }}</li>
+          <li>{{ $t("mainPage.manufacture.seventh") }}</li>
         </ul>
       </div>
       <img

@@ -3,99 +3,103 @@
     <form
       action=""
       @submit.prevent="sendForm"
-      class="bg-mainColor dark:bg-darkBg py-6 px-6 lg:px-12"
+      class="bg-mainColor dark:bg-darkerBg py-6 px-6 lg:px-12"
     >
       <p class="text-[1.375rem] font-bold mb-1 text-center text-white">
-        Оставьте заявку
+        {{ $t("mainPage.contacts.form.header") }}
       </p>
       <p class="text-white text-sm text-center mb-[1.563rem]">
-        Мы свяжемся с Вами в ближайшее время
+        {{ $t("mainPage.contacts.form.content") }}
       </p>
       <div class="mb-2">
-        <label class="block mb-1 text-white text-xs pl-3" for=""
-          >Направление*</label
-        >
+        <label class="block mb-1 text-white text-xs pl-3" for="">{{
+          $t("mainPage.contacts.form.direction.header")
+        }}</label>
         <input
-          class="py-2 px-3 w-full"
+          class="text-xs lg:text-base py-2 px-3 w-full"
           :class="{
             'border border-red-500': v$.form.direction.$errors.length,
           }"
           v-model="form.direction"
-          placeholder="Производство ПОСМ"
+          :placeholder="$t('mainPage.contacts.form.direction.placeholder')"
           type="text"
         />
         <p
-          class="text-red-500 text-sm mt-2"
+          class="text-red-500 text-xs lg:text-base mt-2"
           v-if="v$.form.direction.$errors.length"
         >
-          Ввод направления не заполнен
+          {{ $t("mainPage.contacts.form.direction.error") }}
         </p>
       </div>
       <div class="mb-2">
-        <label class="block mb-1 text-white text-xs pl-3" for="">Имя*</label>
+        <label class="block mb-1 text-white text-xs pl-3" for="">
+          {{ $t("mainPage.contacts.form.name.header") }}</label
+        >
         <input
-          class="py-2 px-3 w-full"
+          class="text-xs lg:text-base py-2 px-3 w-full"
           :class="{
             'border border-red-500': v$.form.name.$errors.length,
           }"
           v-model="form.name"
-          placeholder="Иван Иванов"
+          :placeholder="$t('mainPage.contacts.form.name.placeholder')"
           type="text"
         />
-        <p class="text-red-500 text-sm mt-2" v-if="v$.form.name.$errors.length">
-          Ввод имени не заполнен
+        <p
+          class="text-red-500 text-xs lg:text-base mt-2"
+          v-if="v$.form.name.$errors.length"
+        >
+          {{ $t("mainPage.contacts.form.name.error") }}
         </p>
       </div>
       <div class="mb-2">
-        <label class="block mb-1 text-white text-xs pl-3" for="">Email*</label>
+        <label class="block mb-1 text-white text-xs pl-3" for="">{{
+          $t("mainPage.contacts.form.email.header")
+        }}</label>
         <input
-          class="py-2 px-3 w-full"
+          class="text-xs lg:text-base py-2 px-3 w-full"
           :class="{
             'border border-red-500': v$.form.email.$errors.length,
           }"
           v-model="form.email"
-          placeholder="i.ivanov@gmail.com"
+          :placeholder="$t('mainPage.contacts.form.email.placeholder')"
           type="text"
         />
         <p
-          class="text-red-500 text-sm mt-2"
+          class="text-red-500 text-xs lg:text-base mt-2"
           v-if="v$.form.email.$errors.length"
         >
-          Ввод email не заполнен
+          {{ $t("mainPage.contacts.form.email.error") }}
         </p>
       </div>
       <div class="mb-2">
-        <label class="block mb-1 text-white text-xs pl-3" for=""
-          >Телефон*</label
-        >
+        <label class="block mb-1 text-white text-xs pl-3" for="">{{
+          $t("mainPage.contacts.form.phone.header")
+        }}</label>
         <input
-          class="py-2 px-3 w-full"
+          class="text-xs lg:text-base py-2 px-3 w-full"
           :class="{
             'border border-red-500': v$.form.phone.$errors.length,
           }"
           v-model="form.phone"
           v-mask="'+7(###) ###-##-##'"
-          placeholder="+7 (777) 777-77-77"
+          :placeholder="$t('mainPage.contacts.form.phone.placeholder')"
           type="text"
         />
         <p
-          class="text-red-500 text-sm mt-2"
+          class="text-red-500 text-xs lg:text-base mt-2"
           v-if="v$.form.phone.$errors.length"
         >
-          Ввод телефона не заполнен
+          {{ $t("mainPage.contacts.form.phone.error") }}
         </p>
       </div>
       <div class="mb-5">
-        <label class="block mb-1 text-white text-xs pl-3" for=""
-          >Краткое описание задачи</label
-        >
+        <label class="block mb-1 text-white text-xs pl-3" for="">{{
+          $t("mainPage.contacts.form.note.header")
+        }}</label>
         <textarea
-          class="py-2 px-3 w-full"
-          :class="{
-            'border border-red-500': v$.form.phone.$errors.length,
-          }"
+          class="text-xs lg:text-base py-2 px-3 w-full"
           v-model="form.note"
-          placeholder="Введите текст"
+          :placeholder="$t('mainPage.contacts.form.note.placeholder')"
         />
       </div>
       <button
@@ -103,7 +107,7 @@
         class="px-14 py-3 w-max mx-auto font-bold bg-secondaryColor text-white block"
         type="submit"
       >
-        <span v-if="!loading">Отправить</span>
+        <span v-if="!loading">{{ $t("mainPage.contacts.form.button") }}</span>
         <Loader v-else />
       </button>
     </form>

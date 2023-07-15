@@ -1,7 +1,9 @@
 <template>
-  <div class="relative pt-16 lg:pt-[10.625rem] pb-14 lg:pb-[10.938rem] bg-secondaryColor">
+  <div
+    class="relative pt-16 lg:pt-[10.625rem] pb-14 lg:pb-[10.938rem] bg-secondaryColor dark:bg-darkerBg"
+  >
     <img
-      class="w-full h-full absolute left-0 top-0 object-cover"
+      class="w-full h-full dark:hidden absolute left-0 top-0 object-cover"
       src="@/assets/img/touch/bg.png"
       alt=""
     />
@@ -10,14 +12,14 @@
       src="@/assets/img/touch/object.png"
       alt=""
     />
-    <div class=" w-[21.875rem] lg:w-[38.813rem] h-[20.625rem] lg:h-[36.688rem] bg-white blur-[150px] right-0 bottom-0 translate-x-1/3 lg:translate-y-1/4 absolute">
-
-    </div>
+    <div
+      class="w-[21.875rem] lg:w-[38.813rem] h-[20.625rem] lg:h-[36.688rem] bg-white blur-[150px] right-0 bottom-0 translate-x-1/3 lg:translate-y-1/4 absolute"
+    ></div>
     <div class="relative z-10">
       <div class="container mx-auto px-4 lg:px-0">
         <Heading
           class="mb-6 lg:mb-[5.25rem]"
-          heading="наш подход"
+          :heading="$t('mainPage.touch.header')"
           line="left"
           :mainColor="true"
         />
@@ -37,13 +39,17 @@
                     1
                   </p>
                   <p class="text-xs lg:text-sm font-bold w-full lg:w-3/4">
-                    Разработаем дизайн и подготовим файлы
+                    {{ $t("mainPage.touch.first.header") }}
                   </p>
                 </div>
                 <div class="flex justify-end">
                   <ul class="mr-0 ml-0 list-disc text-[0.625rem] w-3/4">
-                    <li>технические файлы</li>
-                    <li>файлы для печати</li>
+                    <li>
+                      {{ $t("mainPage.touch.first.content.first") }}
+                    </li>
+                    <li>
+                      {{ $t("mainPage.touch.first.content.second") }}
+                    </li>
                   </ul>
                 </div>
               </div>
@@ -64,13 +70,17 @@
                     2
                   </p>
                   <p class="text-xs lg:text-sm font-bold w-full lg:w-1/3">
-                    Инженер спроектирует
+                    {{ $t("mainPage.touch.second.header") }}
                   </p>
                 </div>
                 <div class="flex justify-end">
                   <ul class="mr-0 ml-0 list-disc text-[0.625rem] w-3/4">
-                    <li>технические файлы</li>
-                    <li>файлы для печати</li>
+                    <li>
+                      {{ $t("mainPage.touch.second.content.first") }}
+                    </li>
+                    <li>
+                      {{ $t("mainPage.touch.second.content.second") }}
+                    </li>
                   </ul>
                 </div>
               </div>
@@ -91,13 +101,17 @@
                     3
                   </p>
                   <p class="text-xs lg:text-sm font-bold w-full lg:w-1/3">
-                    Команда изготовит
+                    {{ $t("mainPage.touch.third.header") }}
                   </p>
                 </div>
                 <div class="flex justify-end">
                   <ul class="mr-0 ml-0 list-disc text-[0.625rem] w-3/4">
-                    <li>технические файлы</li>
-                    <li>файлы для печати</li>
+                    <li>
+                      {{ $t("mainPage.touch.third.content.first") }}
+                    </li>
+                    <li>
+                      {{ $t("mainPage.touch.third.content.second") }}
+                    </li>
                   </ul>
                 </div>
               </div>

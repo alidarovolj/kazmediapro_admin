@@ -1,7 +1,19 @@
 <template>
-  <div class="hero">
+  <div
+    class="hero dark:!bg-darkerBg"
+    style="
+      background: linear-gradient(
+          154deg,
+          rgba(0, 0, 0, 0.2) 0%,
+          rgba(0, 0, 0, 0) 81.97%
+        ),
+        #1d52a7;
+    "
+  >
     <div class="h-full relative flex container mx-auto px-4 lg:px-0">
-      <div class="hidden lg:flex items-center relative flex-col justify-between mr-20">
+      <div
+        class="hidden lg:flex items-center relative flex-col justify-between mr-20"
+      >
         <div class="lineFirst"></div>
         <p class="withLines whitespace-nowrap text-xl text-white py-5">
           {{ $t("mainPage.hero.line") }}
@@ -18,7 +30,11 @@
           <Button :text="$t('general.callRequest')" />
         </div>
         <div class="flex items-end h-full w-full">
-          <img class="w-full h-full mb-0 relative z-10 object-cover lg:object-none object-bottom lg:translate-x-0 translate-x-1/3" src="@/assets/img/hero/bg.png" alt="" />
+          <img
+            class="w-full h-full mb-0 relative z-10 object-cover lg:object-none object-bottom lg:translate-x-0 translate-x-1/3"
+            src="@/assets/img/hero/bg.png"
+            alt=""
+          />
           <div
             class="rounded-full blur-[300px] bg-white w-[550px] h-[550px] absolute bottom-1/3 right-1/4 translate-x-1/2 translate-y-1/2"
           ></div>

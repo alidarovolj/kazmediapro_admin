@@ -14,12 +14,6 @@ body {
 
 .hero {
   height: 682px;
-  background: linear-gradient(
-      154deg,
-      rgba(0, 0, 0, 0.2) 0%,
-      rgba(0, 0, 0, 0) 81.97%
-    ),
-    #1d52a7;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 .withLines {
@@ -73,6 +67,13 @@ section {
   background-size: cover;
 }
 
+section:is(.dark .dark\:bg-darkBg) {
+  background: #181635 !important;
+}
+section:is(.dark .dark\:bg-darkerBg) {
+  background: #181635 !important;
+}
+
 .bgScreen {
   background: url("../img/bg.png");
   background-position: bottom;
@@ -98,4 +99,18 @@ section {
 
 .manufacturing ul li {
   margin-bottom: 0.875rem;
+}
+
+.footer {
+  background: linear-gradient(
+      154deg,
+      rgba(0, 0, 0, 0.2) 0%,
+      rgba(0, 0, 0, 0) 81.97%
+    ),
+    #181635;
+  box-shadow: 0px -4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+a.active {
+  color: green !important;
 }

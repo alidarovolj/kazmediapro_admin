@@ -1,7 +1,7 @@
 <template>
   <div class="locale-changer dark:text-darkText">
     <select
-      class="text-sm border cursor-pointer dark:border-darkBg rounded-md p-2 bg-white dark:bg-darkElBg px-4"
+      class="text-sm border cursor-pointer dark:border-darkBg rounded-md p-2 bg-white dark:text-black px-4"
       v-model="currentLang"
       @change="switchLocale($event)"
     >

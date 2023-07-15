@@ -1,5 +1,5 @@
 <template>
-  <section class="pt-32">
+  <section ref="services" id="services" class="pt-32 dark:bg-darkBg dark:text-white">
     <div class="block lg:flex pb-0 lg:pb-28">
       <img
         class="hidden lg:block absolute left-0 bottom-0 w-3/4 lg:w-[500px]"
@@ -12,21 +12,17 @@
         <div class="w-full lg:w-4/5">
           <Heading
             class="mb-6 lg:mb-[4.5rem]"
-            heading="услуги"
+            :heading="$t('mainPage.services.header')"
             line="right"
             :center="true"
           />
           <div class="w-full flex justify-between flex-wrap">
-            <div
-              class="w-full lg:w-third flex relative pt-7"
-              v-for="(item, index) of services"
-              :key="index"
-            >
+            <div class="w-full lg:w-third flex relative pt-7">
               <div class="w-max relative mr-4">
                 <p
                   class="bg-mainColor text-[1.75rem] font-bold text-secondaryColor p-1 w-max"
                 >
-                  0{{ index + 1 }}
+                  01
                 </p>
                 <div
                   class="w-[1px] h-full left-1/2 -translate-x-1/2 bg-mainColor -top-[1.125rem] absolute"
@@ -36,9 +32,169 @@
                 <p
                   class="text-mainColor text-xl uppercase font-bold mb-2 w-3/4"
                 >
-                  {{ item.name }}
+                  {{ $t("mainPage.services.list.first.header") }}
                 </p>
-                <p class="text-sm">{{ item.content }}</p>
+                {{ $t("mainPage.services.list.first.content") }}
+              </div>
+            </div>
+            <div class="w-full lg:w-third flex relative pt-7">
+              <div class="w-max relative mr-4">
+                <p
+                  class="bg-mainColor text-[1.75rem] font-bold text-secondaryColor p-1 w-max"
+                >
+                  02
+                </p>
+                <div
+                  class="w-[1px] h-full left-1/2 -translate-x-1/2 bg-mainColor -top-[1.125rem] absolute"
+                ></div>
+              </div>
+              <div class="w-auto flex flex-col">
+                <p
+                  class="text-mainColor text-xl uppercase font-bold mb-2 w-3/4"
+                >
+                  {{ $t("mainPage.services.list.second.header") }}
+                </p>
+                {{ $t("mainPage.services.list.second.content") }}
+              </div>
+            </div>
+            <div class="w-full lg:w-third flex relative pt-7">
+              <div class="w-max relative mr-4">
+                <p
+                  class="bg-mainColor text-[1.75rem] font-bold text-secondaryColor p-1 w-max"
+                >
+                  03
+                </p>
+                <div
+                  class="w-[1px] h-full left-1/2 -translate-x-1/2 bg-mainColor -top-[1.125rem] absolute"
+                ></div>
+              </div>
+              <div class="w-auto flex flex-col">
+                <p
+                  class="text-mainColor text-xl uppercase font-bold mb-2 w-3/4"
+                >
+                  {{ $t("mainPage.services.list.third.header") }}
+                </p>
+                {{ $t("mainPage.services.list.third.content") }}
+              </div>
+            </div>
+            <div class="w-full lg:w-third flex relative pt-7">
+              <div class="w-max relative mr-4">
+                <p
+                  class="bg-mainColor text-[1.75rem] font-bold text-secondaryColor p-1 w-max"
+                >
+                  04
+                </p>
+                <div
+                  class="w-[1px] h-full left-1/2 -translate-x-1/2 bg-mainColor -top-[1.125rem] absolute"
+                ></div>
+              </div>
+              <div class="w-auto flex flex-col">
+                <p
+                  class="text-mainColor text-xl uppercase font-bold mb-2 w-3/4"
+                >
+                  {{ $t("mainPage.services.list.fourth.header") }}
+                </p>
+                {{ $t("mainPage.services.list.fourth.content") }}
+              </div>
+            </div>
+            <div class="w-full lg:w-third flex relative pt-7">
+              <div class="w-max relative mr-4">
+                <p
+                  class="bg-mainColor text-[1.75rem] font-bold text-secondaryColor p-1 w-max"
+                >
+                  05
+                </p>
+                <div
+                  class="w-[1px] h-full left-1/2 -translate-x-1/2 bg-mainColor -top-[1.125rem] absolute"
+                ></div>
+              </div>
+              <div class="w-auto flex flex-col">
+                <p
+                  class="text-mainColor text-xl uppercase font-bold mb-2 w-3/4"
+                >
+                  {{ $t("mainPage.services.list.fifth.header") }}
+                </p>
+                {{ $t("mainPage.services.list.fifth.content") }}
+              </div>
+            </div>
+            <div class="w-full lg:w-third flex relative pt-7">
+              <div class="w-max relative mr-4">
+                <p
+                  class="bg-mainColor text-[1.75rem] font-bold text-secondaryColor p-1 w-max"
+                >
+                  06
+                </p>
+                <div
+                  class="w-[1px] h-full left-1/2 -translate-x-1/2 bg-mainColor -top-[1.125rem] absolute"
+                ></div>
+              </div>
+              <div class="w-auto flex flex-col">
+                <p
+                  class="text-mainColor text-xl uppercase font-bold mb-2 w-3/4"
+                >
+                  {{ $t("mainPage.services.list.sixth.header") }}
+                </p>
+                {{ $t("mainPage.services.list.sixth.content") }}
+              </div>
+            </div>
+            <div class="w-full lg:w-third flex relative pt-7">
+              <div class="w-max relative mr-4">
+                <p
+                  class="bg-mainColor text-[1.75rem] font-bold text-secondaryColor p-1 w-max"
+                >
+                  07
+                </p>
+                <div
+                  class="w-[1px] h-full left-1/2 -translate-x-1/2 bg-mainColor -top-[1.125rem] absolute"
+                ></div>
+              </div>
+              <div class="w-auto flex flex-col">
+                <p
+                  class="text-mainColor text-xl uppercase font-bold mb-2 w-3/4"
+                >
+                  {{ $t("mainPage.services.list.seventh.header") }}
+                </p>
+                {{ $t("mainPage.services.list.seventh.content") }}
+              </div>
+            </div>
+            <div class="w-full lg:w-third flex relative pt-7">
+              <div class="w-max relative mr-4">
+                <p
+                  class="bg-mainColor text-[1.75rem] font-bold text-secondaryColor p-1 w-max"
+                >
+                  08
+                </p>
+                <div
+                  class="w-[1px] h-full left-1/2 -translate-x-1/2 bg-mainColor -top-[1.125rem] absolute"
+                ></div>
+              </div>
+              <div class="w-auto flex flex-col">
+                <p
+                  class="text-mainColor text-xl uppercase font-bold mb-2 w-3/4"
+                >
+                  {{ $t("mainPage.services.list.eighth.header") }}
+                </p>
+                {{ $t("mainPage.services.list.eighth.content") }}
+              </div>
+            </div>
+            <div class="w-full lg:w-third flex relative pt-7">
+              <div class="w-max relative mr-4">
+                <p
+                  class="bg-mainColor text-[1.75rem] font-bold text-secondaryColor p-1 w-max"
+                >
+                  09
+                </p>
+                <div
+                  class="w-[1px] h-full left-1/2 -translate-x-1/2 bg-mainColor -top-[1.125rem] absolute"
+                ></div>
+              </div>
+              <div class="w-auto flex flex-col">
+                <p
+                  class="text-mainColor text-xl uppercase font-bold mb-2 w-3/4"
+                >
+                  {{ $t("mainPage.services.list.ninth.header") }}
+                </p>
+                {{ $t("mainPage.services.list.ninth.content") }}
               </div>
             </div>
           </div>
@@ -66,7 +222,9 @@
               src="@/assets/img/services/1.svg"
               alt=""
             />
-            <p class="text-xs font-bold text-white">Высокий уровень сервиса</p>
+            <p class="text-xs font-bold text-white">
+              {{ $t("mainPage.services.benefits.first") }}
+            </p>
           </div>
           <div
             style="filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))"
@@ -77,7 +235,9 @@
               src="@/assets/img/services/2.svg"
               alt=""
             />
-            <p class="text-xs font-bold text-white">Индивидуальный подход</p>
+            <p class="text-xs font-bold text-white">
+              {{ $t("mainPage.services.benefits.second") }}
+            </p>
           </div>
           <div
             style="filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))"
@@ -89,7 +249,7 @@
               alt=""
             />
             <p class="text-xs font-bold text-white">
-              Логистика и монтаж по всему Казахстану
+              {{ $t("mainPage.services.benefits.third") }}
             </p>
           </div>
         </div>
@@ -97,6 +257,7 @@
     </div>
   </section>
 </template>
+
 <script>
 import Heading from "@/components/General/Heading.vue";
 
@@ -105,62 +266,6 @@ export default {
   data() {
     return {
       active: 1,
-      services: [
-        {
-          id: 1,
-          content:
-            "Разработка дизайна с нуля любой сложности, адаптация, файлы для печати, технические файлы к производству.",
-          name: "Дизайн и разработка",
-        },
-        {
-          id: 2,
-          content:
-            "Эффективная наружная реклама под ключ. Лайтбоксы, вывески, объемные буквы, неоновая реклама и прочее.",
-          name: "Наружная реклама",
-        },
-        {
-          id: 3,
-          content:
-            "Все типы внутренней рекламы. Стенды, световые короба, светодиодные и цифровые экраны, мобайлы, муляжи и прочее.",
-          name: "Внутренняя реклама",
-        },
-        {
-          id: 4,
-          content:
-            "Привлекающие внимание и нестандартные pos-материалы. ОТС, навесные дисплеи, напольные дисплеи, шелфтокеры световые и прочее.",
-          name: "POSM материалы",
-        },
-        {
-          id: 5,
-          content:
-            "Индивидуальный подход к торговому оборудованию. Бренд-зоны, shop-in-shop, endcap, торцы, пристенные модули, бренд шоп и прочее.",
-          name: "Торговое оборудование",
-        },
-        {
-          id: 6,
-          content:
-            "Выделение продукта различной сложности. Брендинг категории, торгового пространства, выделение продукта на полке, кассовая зона, входная группа и прочее.",
-          name: "Брендинг",
-        },
-        {
-          id: 7,
-          content:
-            "Разработка дизайна с нуля, адаптация, файлы для печати, технические файлы к производству.",
-          name: "Коммерческая мебель",
-        },
-        {
-          id: 7,
-          content:
-            "Бренд зоны, стенды любой сложности и масштаба. Оформление и стилизация под бренд.",
-          name: "Производство мебели",
-        },
-        {
-          id: 8,
-          content:
-            "Разработка дизайна с нуля, адаптация, файлы для печати, технические файлы к производству.",
-          name: "Аренда оборудования",
-        },
-      ],
     };
   },
   components: {
@@ -168,7 +273,4 @@ export default {
   },
 };
 </script>
-<style scoped>
-.accordion {
-}
-</style>
+

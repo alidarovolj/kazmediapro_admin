@@ -1,7 +1,7 @@
 <template>
-  <div class="relative pt-[1.875rem] pb-[7.688rem] bg-secondaryColor">
+  <div class="relative pt-[1.875rem] pb-[7.688rem] bg-secondaryColor dark:bg-darkerBg">
     <img
-      class="w-full h-full absolute left-0 top-0 object-cover"
+      class="w-full h-full dark:hidden absolute left-0 top-0 object-cover"
       src="@/assets/img/touch/bg.png"
       alt=""
     />
@@ -9,7 +9,7 @@
       <div class="container mx-auto px-4 lg:px-0">
         <Heading
           class="mb-6 lg:mb-[5.25rem]"
-          heading="Команда"
+          :heading="$t('mainPage.team.header')"
           line="left"
           :mainColor="true"
         />
@@ -28,12 +28,14 @@
                   alt=""
                 />
                 <div>
-                  <p class="text-white font-bold mb-2">Юлия Склярова</p>
-                  <p class="text-[0.625rem] text-white">
-                    Генеральный директор.
+                  <p class="text-white font-bold mb-2">
+                    {{ $t("mainPage.team.first.name") }}
                   </p>
                   <p class="text-[0.625rem] text-white">
-                    Опыт в управлении 6 лет.
+                    {{ $t("mainPage.team.first.position") }}
+                  </p>
+                  <p class="text-[0.625rem] text-white">
+                    {{ $t("mainPage.team.first.experience") }}
                   </p>
                 </div>
               </div>
@@ -52,12 +54,14 @@
                   alt=""
                 />
                 <div>
-                  <p class="text-white font-bold mb-2">Александр Бычков</p>
-                  <p class="text-[0.625rem] text-white">
-                    Генеральный директор.
+                  <p class="text-white font-bold mb-2">
+                    {{ $t("mainPage.team.second.name") }}
                   </p>
                   <p class="text-[0.625rem] text-white">
-                    Опыт в управлении 6 лет.
+                    {{ $t("mainPage.team.second.position") }}
+                  </p>
+                  <p class="text-[0.625rem] text-white">
+                    {{ $t("mainPage.team.second.experience") }}
                   </p>
                 </div>
               </div>
@@ -76,12 +80,14 @@
                   alt=""
                 />
                 <div>
-                  <p class="text-white font-bold mb-2">Артем Цымбал</p>
-                  <p class="text-[0.625rem] text-white">
-                    Генеральный директор.
+                  <p class="text-white font-bold mb-2">
+                    {{ $t("mainPage.team.third.name") }}
                   </p>
                   <p class="text-[0.625rem] text-white">
-                    Опыт в управлении 6 лет.
+                    {{ $t("mainPage.team.third.position") }}
+                  </p>
+                  <p class="text-[0.625rem] text-white">
+                    {{ $t("mainPage.team.third.experience") }}
                   </p>
                 </div>
               </div>
@@ -100,21 +106,14 @@
               class="flex flex-col justify-between w-full text-sm lg:text-base h-full relative z-10"
             >
               <p class="leading-6 mb-3 lg:mb-0">
-                Высокий уровень менеджмента помогает принимать верные
-                управленческие решения, разрабатывать новые технологии и решать
-                задачи наших клиентов.
+                {{ $t("mainPage.team.content.first") }}
               </p>
               <p class="leading-6 mb-5 lg:mb-0">
-                Профессионализм специалистов на производстве помогает создавать
-                качественные изделия и выдерживать сроки производства.
+                {{ $t("mainPage.team.content.second") }}
               </p>
               <div class="flex items-center px-4 py-3 bg-mainColor">
                 <img class="mr-3" src="@/assets/img/team/button.svg" alt="" />
-                <p class="text-xs">
-                  Общий штат специалистов на производстве
-                  <span class="font-bold">20 человек</span> с опытом работы от 5
-                  лет и выше
-                </p>
+                <p class="text-xs" v-html="$t('mainPage.team.button')"></p>
               </div>
             </div>
           </div>

@@ -1,9 +1,9 @@
 <template>
-  <div class="bg-mainColor">
+  <div class="bg-mainColor dark:bg-darkerBg">
     <div class="container mx-auto px-4 lg:px-0 py-10">
       <Heading
         class="mb-6 lg:mb-[5.25rem]"
-        heading="почему мы?"
+        :heading="$t('mainPage.whyUs.header')"
         line="right"
         :center="true"
       />
@@ -14,7 +14,11 @@
             src="@/assets/img/whyUs/1.png"
             alt=""
           />
-          <p class=" text-[10px] lg:text-sm font-medium text-white w-10/12 lg:w-2/3 mx-auto">Широкий спектр услуг</p>
+          <p
+            class="text-[10px] lg:text-sm font-medium text-white w-10/12 lg:w-2/3 mx-auto"
+          >
+            {{ $t("mainPage.whyUs.first") }}
+          </p>
         </div>
         <div class="w-max text-center">
           <img
@@ -22,7 +26,11 @@
             src="@/assets/img/whyUs/2.png"
             alt=""
           />
-          <p class=" text-[10px] lg:text-sm font-medium text-white w-10/12 lg:w-2/3 mx-auto">Качество работы</p>
+          <p
+            class="text-[10px] lg:text-sm font-medium text-white w-10/12 lg:w-2/3 mx-auto"
+          >
+            {{ $t("mainPage.whyUs.second") }}
+          </p>
         </div>
         <div class="w-max text-center">
           <img
@@ -30,7 +38,11 @@
             src="@/assets/img/whyUs/3.png"
             alt=""
           />
-          <p class=" text-[10px] lg:text-sm font-medium text-white w-10/12 lg:w-2/3 mx-auto">Ориентация под клиента</p>
+          <p
+            class="text-[10px] lg:text-sm font-medium text-white w-10/12 lg:w-2/3 mx-auto"
+          >
+            {{ $t("mainPage.whyUs.third") }}
+          </p>
         </div>
         <div class="w-max text-center">
           <img
@@ -38,7 +50,11 @@
             src="@/assets/img/whyUs/4.png"
             alt=""
           />
-          <p class=" text-[10px] lg:text-sm font-medium text-white w-10/12 lg:w-2/3 mx-auto">Реклама под ключ</p>
+          <p
+            class="text-[10px] lg:text-sm font-medium text-white w-10/12 lg:w-2/3 mx-auto"
+          >
+            {{ $t("mainPage.whyUs.fourth") }}
+          </p>
         </div>
         <div class="w-max text-center">
           <img
@@ -46,7 +62,11 @@
             src="@/assets/img/whyUs/5.png"
             alt=""
           />
-          <p class=" text-[10px] lg:text-sm font-medium text-white w-10/12 lg:w-2/3 mx-auto">Гарантия на работы</p>
+          <p
+            class="text-[10px] lg:text-sm font-medium text-white w-10/12 lg:w-2/3 mx-auto"
+          >
+            {{ $t("mainPage.whyUs.fifth") }}
+          </p>
         </div>
       </div>
     </div>
