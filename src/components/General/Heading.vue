@@ -1,100 +1,12 @@
 <template>
-  <div
-    class="mb-10 dark:text-white flex items-center relative z-10"
-    :class="{ ' justify-center': center }"
-  >
-    <div class="lineBase">
-      <div
-        :class="{ '!bg-mainColor': mainColor == true }"
-        class="lineLeft"
-        v-if="line == 'left'"
-      ></div>
-    </div>
-    <h2
-      :class="{ '!text-mainColor': mainColor == true }"
-      class="font-bold text-2xl lg:text-[3.375rem] whitespace-normal lg:whitespace-nowrap text-secondaryColor uppercase flex justify-center"
-    >
-      {{ heading }}
-    </h2>
-    <div class="lineBase">
-      <div
-        :class="{ '!bg-mainColor': mainColor == true }"
-        class="lineRight"
-        v-if="line == 'right'"
-      ></div>
-    </div>
+  <div>
+    <h1 class=" text-3xl font-bold dark:text-white">{{ text }}</h1>
   </div>
 </template>
 
 <script>
 export default {
   name: "Heading",
-  props: {
-    heading: {
-      type: String,
-      required: true,
-    },
-    line: {
-      type: String,
-      required: false,
-    },
-    center: {
-      type: Boolean,
-      required: false,
-    },
-    mainColor: {
-      type: Boolean,
-      required: false,
-    },
-  },
+  props: ['text']
 };
 </script>
-
-<style scoped>
-.lineBase {
-  position: relative;
-}
-.lineRight {
-  position: absolute;
-  background: #f18a02;
-  width: 200vh;
-  height: 0.5px;
-  left: 1.5rem;
-}
-.lineRight::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 4px;
-  height: 4px;
-  background: #f18a02;
-  transform: translate(-50%, -50%);
-  border-radius: 100%;
-}
-.lineRight.\!bg-mainColor::before {
-  background: #2058aa;
-}
-.lineLeft {
-  position: absolute;
-  background: #f18a02;
-  width: 200vh;
-  transform: translateX(-100%);
-  height: 0.5px;
-  left: -1.5rem;
-}
-.lineLeft::before {
-  content: "";
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 4px;
-  height: 4px;
-  background: #f18a02;
-  transform: translate(50%, -50%);
-  border-radius: 100%;
-}
-.lineLeft.\!bg-mainColor::before {
-  background: #2058aa;
-}
-</style>
