@@ -17,6 +17,22 @@ const actions = {
       commit("updateCreatedClient", error);
     }
   },
+  async removeClient({ commit }, form) {
+    try {
+      const { data } = await axios.post("/clientRemove", form);
+      commit("updateRemovedClient", data);
+    } catch (error) {
+      commit("updateRemovedClient", error);
+    }
+  },
+  async updateClient({ commit }, form) {
+    try {
+      const { data } = await axios.put("/clientUpdate", form);
+      commit("updateUpdatedClient", data);
+    } catch (error) {
+      commit("updateUpdatedClient", error);
+    }
+  },
 };
 const mutations = {
   updateClients: (state, res) => {
@@ -46,14 +62,24 @@ const mutations = {
   updateCreatedClient: (state, res) => {
     state.createdClient = res;
   },
+  updateRemovedClient: (state, res) => {
+    state.removedClient = res;
+  },
+  updateUpdatedClient: (state, res) => {
+    state.updatedClient = res;
+  },
 };
 const state = {
   clients: null,
   createdClient: null,
+  removedClient: null,
+  updatedClient: null,
 };
 const getters = {
   getClients: (state) => state.clients,
   getCreatedClient: (state) => state.createdClient,
+  getRemovedClient: (state) => state.removedClient,
+  getUpdatedClient: (state) => state.updatedClient,
 };
 
 export default { state, getters, mutations, actions };

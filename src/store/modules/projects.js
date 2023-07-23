@@ -17,6 +17,22 @@ const actions = {
       commit("updateCreatedProject", error);
     }
   },
+  async removeProject({ commit }, form) {
+    try {
+      const { data } = await axios.post("/projectRemove", form);
+      commit("updateRemovedProject", data);
+    } catch (error) {
+      commit("updateRemovedProject", error);
+    }
+  },
+  async updateProject({ commit }, form) {
+    try {
+      const { data } = await axios.put("/projectUpdate", form);
+      commit("updateUpdatedProject", data);
+    } catch (error) {
+      commit("updateUpdatedProject", error);
+    }
+  },
 };
 const mutations = {
   updateProjects: (state, res) => {
@@ -46,14 +62,24 @@ const mutations = {
   updateCreatedProject: (state, res) => {
     state.createdProject = res;
   },
+  updateRemovedProject: (state, res) => {
+    state.removedProject = res;
+  },
+  updateUpdatedProject: (state, res) => {
+    state.updatedProject = res;
+  },
 };
 const state = {
   projects: null,
   createdProject: null,
+  removedProject: null,
+  updatedProject: null,
 };
 const getters = {
   getProjects: (state) => state.projects,
   getCreatedProject: (state) => state.createdProject,
+  getRemovedProject: (state) => state.removedProject,
+  getUpdatedProject: (state) => state.updatedProject,
 };
 
 export default { state, getters, mutations, actions };

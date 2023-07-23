@@ -11,16 +11,16 @@
             class="block lg:hidden text-xl"
             :icon="['fas', 'bars']"
           />
-          <img
-            class="w-28 lg:w-40 block dark:hidden"
-            src="@/assets/img/logo.png"
-            alt=""
-          />
-          <img
-            class="w-28 lg:w-40 hidden dark:block"
-            src="@/assets/img/darkLogo.png"
-            alt=""
-          />
+          <router-link :to="{ name: 'MainPage' }"
+            ><img
+              class="w-28 lg:w-40 block dark:hidden"
+              src="@/assets/img/logo.png"
+              alt="" />
+            <img
+              class="w-28 lg:w-40 hidden dark:block"
+              src="@/assets/img/darkLogo.png"
+              alt=""
+          /></router-link>
           <div class="flex items-center">
             <div class="flex items-center mr-3">
               <div class="hidden lg:flex items-center">
@@ -34,13 +34,17 @@
                   :to="{ name: 'Categories' }"
                   >Категории</router-link
                 >
-                <router-link class="px-4 transition-all" :to="{ name: 'Clients' }"
+                <router-link
+                  class="px-4 transition-all"
+                  :to="{ name: 'Clients' }"
                   >Клиенты</router-link
                 >
                 <router-link class="px-4 transition-all" :to="{ name: 'Cases' }"
                   >Кейсы</router-link
                 >
-                <router-link class="px-4 transition-all" :to="{ name: 'Projects' }"
+                <router-link
+                  class="px-4 transition-all"
+                  :to="{ name: 'Projects' }"
                   >Проекты</router-link
                 >
                 <router-link
@@ -64,7 +68,57 @@
         </div>
       </div>
     </div>
-    <div v-if="menu == true" class="fixed bgScreen w-full top-0"></div>
+    <div v-if="menu == true" class="fixed bgScreen w-full top-0">
+      <div class="container mx-auto relative">
+        <font-awesome-icon
+          @click="menu = false"
+          class="absolute right-10 top-9 text-5xl"
+          :icon="['fas', 'xmark']"
+        />
+        <div
+          class="h-screen w-full px-4 py-5 bg-white flex items-center text-xl font-medium"
+        >
+          <div class="mb-10">
+            <router-link
+              @click="menu = false"
+              class="px-3 transition-all block mb-6 hover:text-mainColor"
+              :to="{ name: 'MainPage' }"
+              >Пользователи</router-link
+            >
+            <router-link
+              @click="menu = false"
+              class="px-3 transition-all block mb-6 hover:text-mainColor"
+              :to="{ name: 'Categories' }"
+              >Категории</router-link
+            >
+            <router-link
+              @click="menu = false"
+              class="px-3 transition-all block mb-6 hover:text-mainColor"
+              :to="{ name: 'Clients' }"
+              >Клиенты</router-link
+            >
+            <router-link
+              @click="menu = false"
+              class="px-3 transition-all block mb-6 hover:text-mainColor"
+              :to="{ name: 'Cases' }"
+              >Кейсы</router-link
+            >
+            <router-link
+              @click="menu = false"
+              class="px-3 transition-all block mb-6 hover:text-mainColor"
+              :to="{ name: 'Projects' }"
+              >Проекты</router-link
+            >
+            <router-link
+              @click="menu = false"
+              class="px-3 transition-all block mb-6 hover:text-mainColor"
+              :to="{ name: 'Messages' }"
+              >Сообщения</router-link
+            >
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 

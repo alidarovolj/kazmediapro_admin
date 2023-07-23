@@ -2,11 +2,11 @@
   <div class="text-sm">
     <div class="mb-3 lg:mb-0 lg:w-full">
       <h2 class="text-center text-2xl font-medium mb-4 dark:text-darkText">
-        Добавить кейс
+        Редактирование кейса
       </h2>
     </div>
     <div v-if="getCategories" class="flex flex-col">
-      <form action="" @submit.prevent="createCaseLocal">
+      <form action="" @submit.prevent="updateCaseLocal">
         <div class="flex flex-col mb-5">
           <input
             v-model="form.name"
@@ -77,7 +77,7 @@
             type="submit"
             class="w-max px-6 py-2.5 text-center bg-secondaryColor dark:bg-secondaryColor text-white cursor-pointer"
           >
-            <p v-if="loading == false">Создать кейс</p>
+            <p v-if="loading == false">Подтвердить редактирование</p>
             <div class="flex items-center" v-else>
               <p class="spinner mr-2"></p>
               Подождите
@@ -98,11 +98,12 @@ import { required } from "@vuelidate/validators";
 import "vue3-toastify/dist/index.css";
 
 export default {
-  name: "CreateCase",
+  name: "updateCase",
   data() {
     return {
       loading: false,
       form: {
+        id: null,
         name: "",
         description: "",
         images: [],
@@ -110,9 +111,16 @@ export default {
       },
     };
   },
+  props: {
+    tranID: {
+      type: Object,
+      required: true,
+    },
+  },
   validations() {
     return {
       form: {
+        id: { required },
         name: { required },
         description: { required },
         category_id: { required },
@@ -121,7 +129,7 @@ export default {
     };
   },
   methods: {
-    ...mapActions(["createCase", "cases", "categories"]),
+    ...mapActions(["updateCase", "cases", "categories"]),
     handleImageUpload(event) {
       const files = event.target.files;
       if (files.length > 0) {
@@ -137,7 +145,6 @@ export default {
       const reader = new FileReader();
       reader.onload = (event) => {
         const base64String = event.target.result;
-        // Concatenate the new base64String to the existing images array
         this.form.images = this.form.images.concat(base64String);
       };
       reader.readAsDataURL(file);
@@ -147,6 +154,7 @@ export default {
     },
     clearModal() {
       this.form = {
+        id: null,
         name: "",
         description: "",
         category_id: "",
@@ -156,7 +164,7 @@ export default {
     closeModal() {
       this.$emit("requestToClose", false);
     },
-    async createCaseLocal() {
+    async updateCaseLocal() {
       this.loading = true;
       this.v$.$validate();
 
@@ -166,11 +174,11 @@ export default {
         return;
       }
 
-      await this.createCase(this.form);
-      if (this.getCreatedCase.success == true) {
+      await this.updateCase(this.form);
+      if (this.getUpdatedCase.success == true) {
         this.cases();
         this.loading = false;
-        this.notify(true, "Кейс успешно создан");
+        this.notify(true, "Кейс успешно отредактирован");
         this.closeModal();
         this.clearModal();
       } else {
@@ -180,10 +188,15 @@ export default {
     },
   },
   computed: {
-    ...mapGetters(["getCreatedCase", "getCategories"]),
+    ...mapGetters(["getUpdatedCase", "getCategories"]),
   },
-  mounted() {
-    this.categories();
+  async mounted() {
+    await this.categories();
+    this.form.id = this.tranID.id;
+    this.form.name = this.tranID.name;
+    this.form.description = this.tranID.description;
+    this.form.images = this.tranID.images;
+    this.form.category_id = this.tranID.category_id.id;
   },
   setup() {
     const notify = (toastState, toastText) => {

@@ -26,6 +26,31 @@
           />
         </div>
         <div class="flex flex-col mb-5">
+          <input
+            type="file"
+            accept="image/*"
+            multiple
+            @change="handleImageUpload"
+          />
+        </div>
+        <div v-if="form.images.length > 0" class="flex flex-col mb-5">
+          <div class="flex overflow-x-auto">
+            <img
+              @click="removeImage(index)"
+              v-for="(image, index) of form.images"
+              :key="index"
+              class="cursor-pointer w-48 mr-2 p-2 border h-48 object-cover object-top"
+              :src="image"
+              alt=""
+            />
+          </div>
+        </div>
+        <div v-else class="mb-5">
+          <p :class="{ 'text-red-500': this.v$.form.images.$error }">
+            В данный момент картинки все еще не загружены
+          </p>
+        </div>
+        <div class="flex flex-col mb-5">
           <select
             v-model="form.case_id"
             class="py-2 pl-4 pr-2.5 bg-white border border-solid border-[#D8D6DE] dark:bg-darkBg dark:text-darkText"
@@ -79,8 +104,8 @@
     </div>
   </div>
 </template>
-      
-      <script>
+
+<script>
 import { mapActions, mapGetters } from "vuex";
 import { toast } from "vue3-toastify";
 import { useVuelidate } from "@vuelidate/core";
@@ -97,10 +122,7 @@ export default {
       form: {
         name: "",
         description: "",
-        images: [
-          "https://m.media-amazon.com/images/I/719nhErutkL._AC_UF1000,1000_QL80_.jpg",
-          "https://object.pscloud.io/cms/cms/Photo/img_0_484_527_4_6.png",
-        ],
+        images: [],
         case_id: null,
         client_id: null,
       },
@@ -113,11 +135,35 @@ export default {
         description: { required },
         case_id: { required },
         client_id: { required },
+        images: { required },
       },
     };
   },
   methods: {
     ...mapActions(["createProject", "projects", "clients", "cases"]),
+    handleImageUpload(event) {
+      const files = event.target.files;
+      if (files.length > 0) {
+        // Loop through the selected files
+        for (let i = 0; i < files.length; i++) {
+          const file = files[i];
+          this.readFileAsBase64(file);
+        }
+      }
+    },
+
+    readFileAsBase64(file) {
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        const base64String = event.target.result;
+        // Concatenate the new base64String to the existing images array
+        this.form.images = this.form.images.concat(base64String);
+      };
+      reader.readAsDataURL(file);
+    },
+    removeImage(index) {
+      this.form.images.splice(index, 1);
+    },
     clearModal() {
       this.form = {
         name: "",
@@ -177,4 +223,3 @@ export default {
   },
 };
 </script>
-      

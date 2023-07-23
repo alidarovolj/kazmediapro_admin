@@ -12,20 +12,20 @@
     />
     <div class="container mx-auto px-4 lg:px-0 dark:text-darkText">
       <div
-        class="w-1/2 mx-auto bg-mainColor text-white p-7 dark:bg-darkerBg dark:text-white"
+        class="w-full lg:w-1/2 mt-20 lg:mt-0 mx-auto bg-mainColor text-white p-7 dark:bg-darkerBg dark:text-white"
       >
         <p class="text-2xl font-semibold mb-5">Регистрация</p>
         <div class="flex justify-center"></div>
-        <form action="" @submit.prevent="sendForm">
+        <form class="text-black" action="" @submit.prevent="sendForm">
           <div class="flex justify-between">
             <div class="mb-5 w-third">
               <input
-                class="bg-white border-gray-300 border w-full dark:text-black py-2 px-3"
+                class="bg-white border-gray-300 border w-full dark:text-black py-2 px-3 text-sm"
                 :class="{
                   '!border-red-500 border': v$.form.name.$errors.length,
                 }"
                 v-model="form.name"
-                placeholder="Введите имя"
+                placeholder="Имя"
                 type="text"
               />
               <p
@@ -37,12 +37,12 @@
             </div>
             <div class="mb-5 w-third">
               <input
-                class="bg-white border-gray-300 border w-full dark:text-black py-2 px-3"
+                class="bg-white border-gray-300 border w-full dark:text-black py-2 px-3 text-sm"
                 :class="{
                   '!border-red-500 border': v$.form.lastname.$errors.length,
                 }"
                 v-model="form.lastname"
-                placeholder="Введите фамилию"
+                placeholder="Фамилия"
                 type="text"
               />
               <p
@@ -54,12 +54,12 @@
             </div>
             <div class="mb-5 w-third">
               <input
-                class="bg-white border-gray-300 border w-full dark:text-black py-2 px-3"
+                class="bg-white border-gray-300 border w-full dark:text-black py-2 px-3 text-sm"
                 :class="{
                   '!border-red-500 border': v$.form.patro.$errors.length,
                 }"
                 v-model="form.patro"
-                placeholder="Введите отчество"
+                placeholder="Отчество"
                 type="text"
               />
               <p
@@ -72,7 +72,7 @@
           </div>
           <div class="mb-5">
             <input
-              class="bg-white border-gray-300 border w-full dark:text-black py-2 px-3"
+              class="bg-white border-gray-300 border w-full dark:text-black py-2 px-3 text-sm"
               :class="{
                 '!border-red-500 border': v$.form.email.$errors.length,
               }"
@@ -89,7 +89,7 @@
           </div>
           <div class="mb-5">
             <input
-              class="bg-white border-gray-300 border w-full dark:text-black py-2 px-3"
+              class="bg-white border-gray-300 border w-full dark:text-black py-2 px-3 text-sm"
               v-mask="'+7(###) ###-##-##'"
               :class="{
                 '!border-red-500 border': v$.form.phone.$errors.length,
@@ -107,7 +107,7 @@
           </div>
           <div class="mb-5">
             <input
-              class="bg-white border-gray-300 border w-full dark:text-black py-2 px-3"
+              class="bg-white border-gray-300 border w-full dark:text-black py-2 px-3 text-sm"
               :class="{
                 '!border-red-500 border': v$.form.password.$errors.length,
               }"
@@ -124,7 +124,7 @@
           </div>
           <div class="mb-5">
             <input
-              class="bg-white border-gray-300 border w-full dark:text-black py-2 px-3"
+              class="bg-white border-gray-300 border w-full dark:text-black py-2 px-3 text-sm"
               :class="{
                 '!border-red-500 border':
                   v$.form.password_confirmation.$errors.length,
@@ -224,7 +224,7 @@ export default {
         this.loading = false;
         this.$router.push({ name: "Login" });
         this.notify(true, "Вы успешно зарегистрированы!");
-      } else if (this.getRegistration.success == false) {
+      } else {
         this.loading = false;
         this.notify(false, this.getRegistration.error);
       }

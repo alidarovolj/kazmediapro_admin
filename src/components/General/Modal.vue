@@ -27,12 +27,20 @@
     </div>
   </div>
 </template>
-  
-  <script>
+
+<script>
 import CreateCategory from "@/components/Modals/CreateCategory.vue";
 import CreateCase from "@/components/Modals/CreateCase.vue";
 import CreateClient from "@/components/Modals/CreateClient.vue";
 import CreateProject from "@/components/Modals/CreateProject.vue";
+import RemoveCategory from "@/components/Modals/RemoveCategory.vue";
+import RemoveCase from "@/components/Modals/RemoveCase.vue";
+import RemoveProject from "@/components/Modals/RemoveProject.vue";
+import RemoveClient from "@/components/Modals/RemoveClient.vue";
+import EditCategory from "@/components/Modals/EditCategory.vue";
+import EditClient from "@/components/Modals/EditClient.vue";
+import EditCase from "@/components/Modals/EditCase.vue";
+import EditProject from "@/components/Modals/EditProject.vue";
 
 export default {
   name: "ModalSlot",
@@ -64,7 +72,14 @@ export default {
     CreateCase,
     CreateClient,
     CreateProject,
+    RemoveCategory,
+    RemoveCase,
+    RemoveProject,
+    RemoveClient,
+    EditCategory,
+    EditClient,
+    EditCase,
+    EditProject,
   },
 };
 </script>
-  

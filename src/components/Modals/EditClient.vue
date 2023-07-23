@@ -2,21 +2,21 @@
   <div class="text-sm">
     <div class="mb-3 lg:mb-0 lg:w-full">
       <h2 class="text-center text-2xl font-medium mb-4 dark:text-darkText">
-        Добавить категорию
+        Редактирование клиента
       </h2>
     </div>
-    <p class="text-center mb-5 text-[#6E6B7B] dark:text-darkText">
-      Категории, которые вы можете использовать и назначать своим кейсам
-    </p>
+    <!-- <p class="text-center mb-5 text-[#6E6B7B] dark:text-darkText">
+        Клиенты, которые вы можете использовать и назначать своим кейсам
+      </p> -->
     <div class="flex flex-col">
-      <form action="" @submit.prevent="createCategoryLocal">
+      <form action="" @submit.prevent="updateClientLocal">
         <div class="flex flex-col mb-5">
           <input
             v-model="form.name"
             type="text"
             class="py-2 pl-4 pr-2.5 bg-white border border-solid border-[#D8D6DE] dark:bg-darkBg dark:text-darkText"
             :class="{ 'border-red-500': this.v$.form.name.$error }"
-            placeholder="Название категории"
+            placeholder="Название клиента"
           />
         </div>
         <div class="flex justify-center text-sm">
@@ -30,7 +30,7 @@
             type="submit"
             class="w-max px-6 py-2.5 text-center bg-secondaryColor dark:bg-secondaryColor text-white cursor-pointer"
           >
-            <p v-if="loading == false">Создать категорию</p>
+            <p v-if="loading == false">Подтвердить редактирование</p>
             <div class="flex items-center" v-else>
               <p class="spinner mr-2"></p>
               Подождите
@@ -41,8 +41,8 @@
     </div>
   </div>
 </template>
-  
-  <script>
+
+<script>
 import { mapActions, mapGetters } from "vuex";
 import { toast } from "vue3-toastify";
 import { useVuelidate } from "@vuelidate/core";
@@ -51,34 +51,43 @@ import { required } from "@vuelidate/validators";
 import "vue3-toastify/dist/index.css";
 
 export default {
-  name: "CreateCategory",
+  name: "UpdateClient",
   data() {
     return {
       loading: false,
       errorResponse: [],
       form: {
+        id: null,
         name: "",
       },
     };
   },
+  props: {
+    tranID: {
+      type: Object,
+      required: true,
+    },
+  },
   validations() {
     return {
       form: {
+        id: { required },
         name: { required },
       },
     };
   },
   methods: {
-    ...mapActions(["createCategory", "categories"]),
+    ...mapActions(["updateClient", "clients"]),
     clearModal() {
       this.form = {
+        id: null,
         name: "",
       };
     },
     closeModal() {
       this.$emit("requestToClose", false);
     },
-    async createCategoryLocal() {
+    async updateClientLocal() {
       this.loading = true;
       this.v$.$validate();
 
@@ -88,11 +97,11 @@ export default {
         return;
       }
 
-      await this.createCategory(this.form);
-      if (this.getCreatedCategory.success == true) {
-        this.categories();
+      await this.updateClient(this.form);
+      if (this.getUpdatedClient.success == true) {
+        this.clients();
         this.loading = false;
-        this.notify(true, "Категория успешно создана");
+        this.notify(true, "Клиент успешно отредактирован");
         this.closeModal();
         this.clearModal();
       } else {
@@ -102,7 +111,11 @@ export default {
     },
   },
   computed: {
-    ...mapGetters(["getCreatedCategory"]),
+    ...mapGetters(["getUpdatedClient"]),
+  },
+  mounted() {
+    this.form.id = this.tranID.id;
+    this.form.name = this.tranID.name;
   },
   setup() {
     const notify = (toastState, toastText) => {
@@ -123,4 +136,3 @@ export default {
   },
 };
 </script>
-  

@@ -32,6 +32,13 @@ instance.interceptors.request.use(
 
 instance.interceptors.response.use(
   (response) => {
+    console.log(response)
+    if (response.data.error == true) {
+      localStorage.removeItem("user");
+      localStorage.removeItem("token");
+      localStorage.removeItem("token_exp");
+      router.push("/login");
+    }
     return response;
   },
   (error) => {

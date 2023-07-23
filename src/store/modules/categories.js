@@ -17,6 +17,22 @@ const actions = {
       commit("updateCreatedCategory", error);
     }
   },
+  async removeCategory({ commit }, id) {
+    try {
+      const { data } = await axios.post("/categoryRemove", id);
+      commit("updateRemovedCateogory", data);
+    } catch (error) {
+      commit("updateRemovedCateogory", error);
+    }
+  },
+  async updateCategory({ commit }, form) {
+    try {
+      const { data } = await axios.put("/categoryUpdate", form);
+      commit("updateUpdatedCateogory", data);
+    } catch (error) {
+      commit("updateUpdatedCateogory", error);
+    }
+  },
 };
 const mutations = {
   updateCategories: (state, res) => {
@@ -46,14 +62,24 @@ const mutations = {
   updateCreatedCategory: (state, res) => {
     state.createdCategory = res;
   },
+  updateRemovedCateogory: (state, res) => {
+    state.removedCategory = res;
+  },
+  updateUpdatedCateogory: (state, res) => {
+    state.updatedCategory = res;
+  },
 };
 const state = {
   categories: null,
   createdCategory: null,
+  removedCategory: null,
+  updatedCategory: null,
 };
 const getters = {
   getCategories: (state) => state.categories,
   getCreatedCategory: (state) => state.createdCategory,
+  getRemovedCategory: (state) => state.removedCategory,
+  getUpdatedCategory: (state) => state.updatedCategory,
 };
 
 export default { state, getters, mutations, actions };

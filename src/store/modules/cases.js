@@ -17,6 +17,22 @@ const actions = {
       commit("updateCreatedCase", error);
     }
   },
+  async removeCase({ commit }, form) {
+    try {
+      const { data } = await axios.post("/caseRemove", form);
+      commit("updateRemovedCase", data);
+    } catch (error) {
+      commit("updateRemovedCase", error);
+    }
+  },
+  async updateCase({ commit }, form) {
+    try {
+      const { data } = await axios.put("/caseUpdate", form);
+      commit("updateUpdatedCases", data);
+    } catch (error) {
+      commit("updateUpdatedCases", error);
+    }
+  },
 };
 const mutations = {
   updateCases: (state, res) => {
@@ -46,14 +62,24 @@ const mutations = {
   updateCreatedCase: (state, res) => {
     state.createdCase = res;
   },
+  updateRemovedCase: (state, res) => {
+    state.removedCase = res;
+  },
+  updateUpdatedCases: (state, res) => {
+    state.updatedCase = res;
+  },
 };
 const state = {
   cases: null,
   createdCase: null,
+  removedCase: null,
+  updatedCase: null,
 };
 const getters = {
   getCases: (state) => state.cases,
   getCreatedCase: (state) => state.createdCase,
+  getRemovedCase: (state) => state.removedCase,
+  getUpdatedCase: (state) => state.updatedCase,
 };
 
 export default { state, getters, mutations, actions };

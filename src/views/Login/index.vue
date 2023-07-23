@@ -12,14 +12,14 @@
     />
     <div class="container mx-auto px-4 lg:px-0 dark:text-darkText">
       <div
-        class="w-1/2 mx-auto bg-mainColor text-white p-7 dark:bg-darkerBg dark:text-white"
+        class="w-full lg:w-1/2 mx-auto bg-mainColor text-white p-7 dark:bg-darkerBg dark:text-white"
       >
         <p class="text-2xl font-semibold mb-5">Вход</p>
         <div class="flex justify-center"></div>
-        <form action="" @submit.prevent="sendForm">
+        <form class="text-black dark:text-white" action="" @submit.prevent="sendForm">
           <div class="mb-5">
             <input
-              class="bg-white dark:text-black border-gray-300 border w-full py-2 px-3"
+              class="bg-white dark:text-black border-gray-300 border w-full py-2 px-3 text-sm"
               :class="{
                 '!border-red-500 border': v$.form.email.$errors.length,
               }"
@@ -36,7 +36,7 @@
           </div>
           <div class="mb-5">
             <input
-              class="bg-white dark:text-black border-gray-300 border w-full py-2 px-3"
+              class="bg-white dark:text-black border-gray-300 border w-full py-2 px-3 text-sm"
               :class="{
                 '!border-red-500 border': v$.form.password.$errors.length,
               }"
@@ -122,10 +122,10 @@ export default {
       await this.authUser(this.form);
       await this.setUser();
 
-      if (this.getAuth) {
+      if (this.getAuth.success == true) {
         this.loading = false;
-        this.notify(true, "Вы успешно вошли на сайт");
         this.$router.push("/");
+        this.notify(true, "Вы успешно вошли на сайт");
       } else {
         this.loading = false;
         this.notify(false, "Email или пароль неверны");

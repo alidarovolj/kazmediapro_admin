@@ -90,11 +90,21 @@
           <template v-else>
             <div class="">
               <div
-                class="cursor-pointer text-xs h-48 border-b py-3 pb-10 truncate relative"
+                class="cursor-pointer text-xs h-48 border-b py-3 pb-10 truncate relative dark:text-white"
                 v-for="(row, key) in source?.data"
                 :class="{ '!h-full !text-clip': openedTab[key] }"
                 :key="key"
               >
+                <div
+                  @click="openTab(key)"
+                  class="absolute w-full bottom-0 py-2 text-center bg-gray-50 dark:bg-darkBg"
+                >
+                  <font-awesome-icon
+                    :class="{ 'rotate-180': openedTab[key] }"
+                    :icon="['fas', 'chevron-down']"
+                  />
+                </div>
+
                 <div>
                   <div
                     @click="

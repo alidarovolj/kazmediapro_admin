@@ -2,18 +2,18 @@
   <div class="text-sm">
     <div class="mb-3 lg:mb-0 lg:w-full">
       <h2 class="text-center text-2xl font-medium mb-4 dark:text-darkText">
-        Добавить кейс
+        Редактирование проекта
       </h2>
     </div>
-    <div v-if="getCategories" class="flex flex-col">
-      <form action="" @submit.prevent="createCaseLocal">
+    <div v-if="getClients && getCases" class="flex flex-col">
+      <form action="" @submit.prevent="updateProjectLocal">
         <div class="flex flex-col mb-5">
           <input
             v-model="form.name"
             type="text"
             class="py-2 pl-4 pr-2.5 bg-white border border-solid border-[#D8D6DE] dark:bg-darkBg dark:text-darkText"
             :class="{ 'border-red-500': this.v$.form.name.$error }"
-            placeholder="Название кейса"
+            placeholder="Название проекта"
           />
         </div>
         <div class="flex flex-col mb-5">
@@ -22,7 +22,7 @@
             type="text"
             class="py-2 pl-4 pr-2.5 bg-white border border-solid border-[#D8D6DE] dark:bg-darkBg dark:text-darkText"
             :class="{ 'border-red-500': this.v$.form.description.$error }"
-            placeholder="Описание кейса"
+            placeholder="Описание проекта"
           />
         </div>
         <div class="flex flex-col mb-5">
@@ -52,13 +52,29 @@
         </div>
         <div class="flex flex-col mb-5">
           <select
-            v-model="form.category_id"
+            v-model="form.case_id"
             class="py-2 pl-4 pr-2.5 bg-white border border-solid border-[#D8D6DE] dark:bg-darkBg dark:text-darkText"
-            :class="{ 'border-red-500': this.v$.form.category_id.$error }"
+            :class="{ 'border-red-500': this.v$.form.case_id.$error }"
           >
-            <option :value="null">Выберите категорию</option>
+            <option :value="null">Выберите кейс</option>
             <option
-              v-for="(item, index) of getCategories.data"
+              v-for="(item, index) of getCases.data"
+              :key="index"
+              :value="item.id"
+            >
+              {{ item.name }}
+            </option>
+          </select>
+        </div>
+        <div class="flex flex-col mb-5">
+          <select
+            v-model="form.client_id"
+            class="py-2 pl-4 pr-2.5 bg-white border border-solid border-[#D8D6DE] dark:bg-darkBg dark:text-darkText"
+            :class="{ 'border-red-500': this.v$.form.client_id.$error }"
+          >
+            <option :value="null">Выберите клиента</option>
+            <option
+              v-for="(item, index) of getClients.data"
               :key="index"
               :value="item.id"
             >
@@ -77,7 +93,7 @@
             type="submit"
             class="w-max px-6 py-2.5 text-center bg-secondaryColor dark:bg-secondaryColor text-white cursor-pointer"
           >
-            <p v-if="loading == false">Создать кейс</p>
+            <p v-if="loading == false">Подтвердить редактирование</p>
             <div class="flex items-center" v-else>
               <p class="spinner mr-2"></p>
               Подождите
@@ -98,30 +114,41 @@ import { required } from "@vuelidate/validators";
 import "vue3-toastify/dist/index.css";
 
 export default {
-  name: "CreateCase",
+  name: "updateProject",
   data() {
     return {
       loading: false,
+      errorResponse: [],
       form: {
+        id: null,
         name: "",
         description: "",
         images: [],
-        category_id: null,
+        case_id: null,
+        client_id: null,
       },
     };
+  },
+  props: {
+    tranID: {
+      type: Object,
+      required: true,
+    },
   },
   validations() {
     return {
       form: {
+        id: { required },
         name: { required },
         description: { required },
-        category_id: { required },
+        case_id: { required },
+        client_id: { required },
         images: { required },
       },
     };
   },
   methods: {
-    ...mapActions(["createCase", "cases", "categories"]),
+    ...mapActions(["updateProject", "projects", "clients", "cases"]),
     handleImageUpload(event) {
       const files = event.target.files;
       if (files.length > 0) {
@@ -147,16 +174,18 @@ export default {
     },
     clearModal() {
       this.form = {
+        id: null,
         name: "",
         description: "",
-        category_id: "",
+        case_id: null,
+        client_id: null,
         images: [],
       };
     },
     closeModal() {
       this.$emit("requestToClose", false);
     },
-    async createCaseLocal() {
+    async updateProjectLocal() {
       this.loading = true;
       this.v$.$validate();
 
@@ -166,11 +195,11 @@ export default {
         return;
       }
 
-      await this.createCase(this.form);
-      if (this.getCreatedCase.success == true) {
-        this.cases();
+      await this.updateProject(this.form);
+      if (this.getUpdatedProject.success == true) {
+        this.projects();
         this.loading = false;
-        this.notify(true, "Кейс успешно создан");
+        this.notify(true, "Проект успешно отредактирован");
         this.closeModal();
         this.clearModal();
       } else {
@@ -180,10 +209,17 @@ export default {
     },
   },
   computed: {
-    ...mapGetters(["getCreatedCase", "getCategories"]),
+    ...mapGetters(["getUpdatedProject", "getClients", "getCases"]),
   },
-  mounted() {
-    this.categories();
+  async mounted() {
+    await this.clients();
+    await this.cases();
+    this.form.id = this.tranID.id;
+    this.form.name = this.tranID.name;
+    this.form.description = this.tranID.description;
+    this.form.images = this.tranID.images;
+    this.form.case_id = this.tranID.case_id.id;
+    this.form.client_id = this.tranID.client_id.id;
   },
   setup() {
     const notify = (toastState, toastText) => {
